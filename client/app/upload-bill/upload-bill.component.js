@@ -10,16 +10,17 @@ angular.module('myApp.uploadbill', ['ngRoute'])
 }])
 
 .controller('UploadBillCtrl', function ($scope, Bill) {
-  // $scope.image = "";
-  $scope.priceBeforeTip = 0;
-  $scope.readyToSplit = false;
-  $scope.item; // single item
-  $scope.price; // price for single item
-  $scope.tax = 0;
-  $scope.taxRate = 0;
-  $scope.tipRate = 0; // this 'rate' is percentage 
-  $scope.items = []; // items is an array of [id, item, price, people]
-  $scope.count = 0; // when remove item, currentItemId will not decrease
+
+	// $scope.image = "";
+	$scope.priceBeforeTip = 0;
+	$scope.readyToSplit = false;
+	$scope.item; // single item
+	$scope.price; // price for single item
+	$scope.tax = 0;
+	$scope.taxRate = 0;
+	$scope.tipRate = 0; // this 'rate' is percentage 
+	$scope.items = []; // items is an array of [id, item, price, people]
+	$scope.count = 0; // when remove item, currentItemId will not decrease
 
   $scope.addbillinfo = function() {
     $scope.priceBeforeTip = Number.parseFloat($scope.priceBeforeTip);

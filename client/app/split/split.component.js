@@ -138,6 +138,17 @@ angular.module('myApp.split', ['ngRoute'])
                 info: $scope.friends
             }
         })
+        // $http({
+        //     method: 'POST',
+        //     url: '/bills',
+        //     data: {
+        //         userID: req.body.userID,
+        //         total: $scope.bill.priceBeforeTip,
+        //         people: $scope.friends,
+        //         info: 
+        //     }
+        // })
+
     }
 }
 );
