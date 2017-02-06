@@ -14,7 +14,6 @@ angular.module('myApp.split', ['ngRoute'])
     $scope.bill = Bill.getBill();
     $scope.assigneditems = [];
     $scope.items = $scope.bill.items;
-
     /******************************************/
     /* THIS IS STRUCTURE OF bill, item, friend
     /* bill: {name: string, items:[], priceBeforeTip: number, taxRate: number, tipRate: number}
@@ -22,6 +21,15 @@ angular.module('myApp.split', ['ngRoute'])
     /* friend: {name: string, items: []}
     /*****************************************/ 
 
+    $scope.getAllFriendName = function() {
+        var array = [];
+        $scope.friends.forEach(function(friend) {
+            array.push(friend.name);
+        });
+        return array;
+    }
+
+    $scope.friendNames = $scope.getAllFriendName();
     /**
     * This function calculate the grand total price for a single friend. Grand total
     * includes total price, tax and tip.
@@ -120,16 +128,16 @@ angular.module('myApp.split', ['ngRoute'])
     * 
     */
     $scope.submitSplit = function() {
-        // $http({
-        //     method: 'POST',
-        //     url: '/bills',
-        //     data: {
-        //         userID: req.body.userID,
-        //         total: $scope.bill.priceBeforeTip,
-        //         people: $scope.friends,
-        //         info: 
-        //     }
-        // })
+        $http({
+            method: 'POST',
+            url: '/bills',
+            data: {
+                userID: '',
+                total: $scope.bill.priceBeforeTip * (1 + $scope.bill.tipRate + $scope.bill.taxRate),
+                people: $scope.friendNames,
+                info: $scope.friends
+            }
+        })
     }
 }
 );
