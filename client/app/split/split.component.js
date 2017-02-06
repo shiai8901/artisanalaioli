@@ -133,6 +133,7 @@ angular.module('myApp.split', ['ngRoute'])
             url: '/bills',
             data: {
                 restaurant: $scope.bill.name,
+                userID: '',
                 total: $scope.bill.priceBeforeTip * (1 + $scope.bill.tipRate + $scope.bill.taxRate),
                 people: $scope.friendNames,
                 info: $scope.friends
@@ -148,6 +149,7 @@ angular.module('myApp.split', ['ngRoute'])
         //         info: 
         //     }
         // })
+
 
     }
 }
