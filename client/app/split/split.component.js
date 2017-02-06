@@ -9,7 +9,7 @@ angular.module('myApp.split', ['ngRoute'])
   });
 }])
 
-.controller('SplitCtrl', function($scope, Friends, Bill) {
+.controller('SplitCtrl', function($scope, $http, Friends, Bill) {
     $scope.friends = Friends.getAll();
     $scope.bill = Bill.getBill();
     $scope.assigneditems = [];
@@ -113,6 +113,23 @@ angular.module('myApp.split', ['ngRoute'])
                 $scope.class = "";
             }
         }
-    }    
+    }  
+
+    /**
+    * This function is sending a post request to server
+    * 
+    */
+    $scope.submitSplit = function() {
+        // $http({
+        //     method: 'POST',
+        //     url: '/bills',
+        //     data: {
+        //         userID: req.body.userID,
+        //         total: $scope.bill.priceBeforeTip,
+        //         people: $scope.friends,
+        //         info: 
+        //     }
+        // })
+    }
 }
 );

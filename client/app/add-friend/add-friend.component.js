@@ -11,11 +11,13 @@ angular.module('myApp.addfriend', ['ngRoute'])
 
 .controller('AddFriendCtrl',  function($scope, Friends) {
     $scope.friends = []; 
+    $scope.readyToSplit = false;
 
     $scope.addOne = function(friendname) {
     	Friends.addOne(friendname); 
     	$scope.getAll();
     	$scope.friendname = "";
+        $scope.ready();
     }
 
     $scope.getAll = function() {   	
@@ -25,6 +27,15 @@ angular.module('myApp.addfriend', ['ngRoute'])
     $scope.removeOne = function(friend) {
     	Friends.removeOne(friend);
     	$scope.getAll();
+        $scope.ready();
+    }
+
+    $scope.ready = function() {
+        if ($scope.friends.length > 0) {
+            $scope.readyToSplit = true;
+        } else {
+            $scope.readyToSplit = false;
+        }
     }
 }
 );
